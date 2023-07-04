@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Recipe Search"
 include ':app'
+enableFeaturePreview("VERSION_CATALOGS")
+
