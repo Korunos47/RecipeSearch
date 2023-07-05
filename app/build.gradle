@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.rollingbits.recipesearch"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -31,12 +31,30 @@ android {
         viewBinding true
     }
 
+    configurations {
+        cleanedAnnotations
+        implementation.exclude group: 'org.jetbrains' , module:'annotations'
+    }
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/license.txt")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/notice.txt")
+        exclude("META-INF/ASL2.0")
+        exclude("META-INF/gradle/incremental.annotation.processors")
+        exclude("META-INF/*.kotlin_module")
+    }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     namespace 'com.rollingbits.recipesearch'
 }
@@ -53,10 +71,9 @@ dependencies {
     implementation libs.navigation
     implementation libs.navigation.fragment.ktx
     implementation libs.navigation.ui.ktx
-    implementation libs.room.runtime
-    implementation libs.room.compiler
-    implementation libs.room.ktx
-    implementation libs.databinding.compiler
+//    implementation libs.room.runtime
+//    implementation libs.room.compiler
+//    implementation libs.room.ktx
     implementation libs.databinding.common
     implementation libs.datastore.preferences
     implementation libs.recyclerview

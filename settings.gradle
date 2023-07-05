@@ -2,6 +2,7 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+        jcenter()
         mavenCentral()
     }
 }
@@ -11,9 +12,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        jcenter()
     }
 }
 rootProject.name = "Recipe Search"
 include ':app'
-enableFeaturePreview("VERSION_CATALOGS")
 
