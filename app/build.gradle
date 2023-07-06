@@ -71,9 +71,9 @@ dependencies {
     implementation libs.navigation
     implementation libs.navigation.fragment.ktx
     implementation libs.navigation.ui.ktx
-//    implementation libs.room.runtime
-//    implementation libs.room.compiler
-//    implementation libs.room.ktx
+    implementation libs.room.runtime
+    implementation libs.room.compiler
+    implementation libs.room.ktx
     implementation libs.databinding.common
     implementation libs.datastore.preferences
     implementation libs.recyclerview
