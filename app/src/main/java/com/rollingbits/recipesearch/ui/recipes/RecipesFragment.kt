@@ -1,4 +1,4 @@
-package com.rollingbits.recipesearch
+package com.rollingbits.recipesearch.ui.recipes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
