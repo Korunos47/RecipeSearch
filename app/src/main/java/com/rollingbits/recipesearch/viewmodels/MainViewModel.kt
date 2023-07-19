@@ -1,4 +1,4 @@
-package com.rollingbits.recipesearch
+package com.rollingbits.recipesearch.viewmodels
 
 import android.app.Application
 import android.content.Context

@@ -37,6 +37,7 @@
 
                 <ImageView
                     android:id="@+id/recipeIv"
+                    loadImageFromUrl="@{result.image}"
                     android:layout_width="200dp"
                     android:layout_height="0dp"
                     android:importantForAccessibility="no"
@@ -98,11 +99,11 @@
 
                 <TextView
                     android:id="@+id/heartTv"
+                    setNumberOfLikes="@{result.aggregateLikes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/red"
-                    setNumberOfLikes="@{result.aggregateLikes}"
                     app:layout_constraintStart_toStartOf="@+id/descriptionTv"
                     app:layout_constraintTop_toBottomOf="@+id/heartIv"
                     tools:text="100" />
@@ -120,11 +121,11 @@
 
                 <TextView
                     android:id="@+id/clockTv"
+                    setNumberOfMinutes="@{result.readyInMinutes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:textAlignment="center"
-                    setNumberOfMinutes="@{result.readyInMinutes}"
                     android:textColor="@color/yellow"
                     app:layout_constraintStart_toEndOf="@+id/heartTv"
                     app:layout_constraintTop_toBottomOf="@+id/clockIv"
@@ -132,10 +133,10 @@
 
                 <ImageView
                     android:id="@+id/veganIv"
+                    applyVeganColor="@{result.vegan}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:importantForAccessibility="no"
-                    applyVeganColor="@{result.vegan}"
                     app:layout_constraintEnd_toEndOf="@+id/veganTv"
                     app:layout_constraintStart_toStartOf="@+id/veganTv"
                     app:layout_constraintTop_toTopOf="@+id/heartIv"
@@ -143,12 +144,12 @@
 
                 <TextView
                     android:id="@+id/veganTv"
+                    applyVeganColor="@{result.vegan}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:textAlignment="center"
-                    applyVeganColor="@{result.vegan}"
                     android:text="@string/vegan"
+                    android:textAlignment="center"
                     app:layout_constraintStart_toEndOf="@+id/clockTv"
                     app:layout_constraintTop_toBottomOf="@+id/veganIv"
                     tools:text="Vegan" />
