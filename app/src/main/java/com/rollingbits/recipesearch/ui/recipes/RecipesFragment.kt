@@ -8,27 +8,34 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rollingbits.recipesearch.viewmodels.MainViewModel
 import com.rollingbits.recipesearch.adapters.RecipesAdapter
 import com.rollingbits.recipesearch.databinding.FragmentRecipesBinding
-import com.rollingbits.recipesearch.util.Constants.Companion.API_KEY
 import com.rollingbits.recipesearch.util.NetworkResult
+import com.rollingbits.recipesearch.viewmodels.MainViewModel
+import com.rollingbits.recipesearch.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var recipesViewModel: RecipesViewModel
     private val adapter by lazy { RecipesAdapter() }
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        recipesViewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
 
-        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         setupRecyclerView()
         requestApiData()
 
@@ -36,7 +43,7 @@ class RecipesFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        mainViewModel.getRecipes(applyQueries())
+        mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Error -> {
@@ -59,7 +66,6 @@ class RecipesFragment : Fragment() {
             }
         }
     }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

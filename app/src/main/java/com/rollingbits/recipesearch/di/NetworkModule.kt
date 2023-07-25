@@ -16,10 +16,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    @Singleton
+    @Provides
     fun provideHttpClient() = OkHttpClient.Builder().readTimeout(15, TimeUnit.SECONDS)
         .connectTimeout(15, TimeUnit.SECONDS)
         .build()
 
+    @Singleton
+    @Provides
     fun provideConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 
     @Singleton

@@ -1,4 +1,4 @@
-package com.rollingbits.recipesearch
+package com.rollingbits.recipesearch.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.rollingbits.recipesearch.R
 import com.rollingbits.recipesearch.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

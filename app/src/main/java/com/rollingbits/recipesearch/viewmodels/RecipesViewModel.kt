@@ -2,18 +2,24 @@ package com.rollingbits.recipesearch.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.rollingbits.recipesearch.util.Constants
+import com.rollingbits.recipesearch.util.Constants.Companion.API_KEY
+import com.rollingbits.recipesearch.util.Constants.Companion.QUERY_ADD_RECIPE_INFORMATION
+import com.rollingbits.recipesearch.util.Constants.Companion.QUERY_API_KEY
+import com.rollingbits.recipesearch.util.Constants.Companion.QUERY_DIET
+import com.rollingbits.recipesearch.util.Constants.Companion.QUERY_FILL_INGREDIENTS
+import com.rollingbits.recipesearch.util.Constants.Companion.QUERY_NUMBER
+import com.rollingbits.recipesearch.util.Constants.Companion.QUERY_TYPE
 
 class RecipesViewModel(application: Application) : AndroidViewModel(application) {
 
-    private fun applyQueries(): HashMap<String, String> {
+    fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
-        queries["number"] = "50"
-        queries["apiKey"] = Constants.API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
+        queries[QUERY_NUMBER] = "5"
+        queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_TYPE] = "snack"
+        queries[QUERY_DIET] = "vegan"
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
 
         return queries
     }

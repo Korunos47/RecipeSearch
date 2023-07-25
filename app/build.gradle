@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id "androidx.navigation.safeargs.kotlin"
     id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -34,7 +35,7 @@ android {
 
     configurations {
         cleanedAnnotations
-        implementation.exclude group: 'org.jetbrains' , module:'annotations'
+        implementation.exclude group: 'org.jetbrains', module: 'annotations'
     }
 
     packagingOptions {
@@ -62,7 +63,7 @@ android {
 
 dependencies {
 
-    implementation libs.kotlin.stdlib
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
     implementation libs.androidx.core.ktx
     implementation libs.appcompat
     implementation libs.constraintlayout
@@ -80,8 +81,8 @@ dependencies {
     implementation libs.recyclerview
     implementation libs.retrofit
     implementation libs.retrofit.gson.converter
-    implementation libs.dagger.hilt
-    implementation libs.dagger.hilt.compiler
+    implementation "com.google.dagger:hilt-android:2.47"
+    kapt "com.google.dagger:hilt-compiler:2.47"
     implementation libs.coroutines.core
     implementation libs.coroutines.android
     implementation libs.lifecycle.extensions
@@ -93,4 +94,8 @@ dependencies {
     implementation libs.shimmer
     implementation libs.shimmer.recyclerview
     implementation libs.jsoup
+}
+
+kapt {
+    correctErrorTypes true
 }
