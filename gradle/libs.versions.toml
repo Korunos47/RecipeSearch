@@ -24,6 +24,7 @@ gson = "2.10.1"
 shimmer = "0.5.0"
 shimmer-recyclerview = "0.4.1"
 jsoup = "1.16.1"
+timber = "5.0.1"
 
 android-application = "8.0.0"
 jetbrains-kotlin-android = "1.9.0"
@@ -43,7 +44,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 navigation = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-test = { group = "androidx.room", name = "room-testing", version.ref = "room" }
@@ -63,8 +63,9 @@ lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-lived
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
-shimmer-recyclerview = { group = "com.todkars", name = "shimmer-recyclerview", version.ref = "shimmer-recyclerview"}
+shimmer-recyclerview = { group = "com.todkars", name = "shimmer-recyclerview", version.ref = "shimmer-recyclerview" }
 jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-application" }

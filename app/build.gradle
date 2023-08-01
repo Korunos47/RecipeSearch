@@ -63,7 +63,7 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
+    implementation libs.kotlin.stdlib
     implementation libs.androidx.core.ktx
     implementation libs.appcompat
     implementation libs.constraintlayout
@@ -73,8 +73,7 @@ dependencies {
     implementation libs.navigation
     implementation libs.navigation.fragment.ktx
     implementation libs.navigation.ui.ktx
-    implementation libs.room.runtime
-    implementation libs.room.compiler
+    kapt libs.room.compiler
     implementation libs.room.ktx
     implementation libs.databinding.common
     implementation libs.datastore.preferences
@@ -94,6 +93,7 @@ dependencies {
     implementation libs.shimmer
     implementation libs.shimmer.recyclerview
     implementation libs.jsoup
+    implementation libs.timber
 }
 
 kapt {

@@ -14,6 +14,7 @@ import com.rollingbits.recipesearch.util.NetworkResult
 import com.rollingbits.recipesearch.viewmodels.MainViewModel
 import com.rollingbits.recipesearch.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber.Forest.d
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -37,12 +38,25 @@ class RecipesFragment : Fragment() {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
 
         setupRecyclerView()
-        requestApiData()
+        readDatabase()
 
         return binding.root
     }
 
+    private fun readDatabase() {
+        mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+            if (database.isNotEmpty()) {
+                d("readDatabase()")
+                adapter.setData(database[0].foodRecipe)
+                hideShimmerEffect()
+            } else {
+                requestApiData()
+            }
+        }
+    }
+
     private fun requestApiData() {
+        d("requestApiData()")
         mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
