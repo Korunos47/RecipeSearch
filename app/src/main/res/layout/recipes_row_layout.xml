@@ -89,9 +89,8 @@
                     android:layout_marginBottom="36dp"
                     android:importantForAccessibility="no"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/heartTv"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/heartTv"
+                    app:layout_constraintStart_toEndOf="@id/recipeIv"
+                    android:layout_marginStart="16dp"
                     app:layout_constraintTop_toBottomOf="@+id/descriptionTv"
                     app:layout_constraintVertical_bias="0.058"
                     app:srcCompat="@drawable/ic_heart"
@@ -104,7 +103,8 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/red"
-                    app:layout_constraintStart_toStartOf="@+id/descriptionTv"
+                    app:layout_constraintStart_toStartOf="@+id/heartIv"
+                    app:layout_constraintEnd_toEndOf="@id/heartIv"
                     app:layout_constraintTop_toBottomOf="@+id/heartIv"
                     tools:text="100" />
 

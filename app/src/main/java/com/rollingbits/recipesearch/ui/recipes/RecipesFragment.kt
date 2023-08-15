@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rollingbits.recipesearch.R
 import com.rollingbits.recipesearch.adapters.RecipesAdapter
 import com.rollingbits.recipesearch.databinding.FragmentRecipesBinding
+import com.rollingbits.recipesearch.util.NetworkListener
 import com.rollingbits.recipesearch.util.NetworkResult
 import com.rollingbits.recipesearch.util.observeOnce
 import com.rollingbits.recipesearch.viewmodels.MainViewModel
@@ -33,6 +34,7 @@ class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var networkListener: NetworkListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
@@ -48,12 +50,28 @@ class RecipesFragment : Fragment() {
         binding.mainViewModel = mainViewModel
 
         setupRecyclerView()
-        readDatabase()
+        recipesViewModel.readIsOnline.observe(viewLifecycleOwner) {
+            recipesViewModel.isOnline = it
+        }
 
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext()).collect { status ->
+                d("Networklisterner: $status")
+                recipesViewModel.networkStatus = status
+                recipesViewModel.showNetworkStatus()
+                readDatabase()
+            }
+        }
 
         binding.recipesFAB.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            if (recipesViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            } else {
+                recipesViewModel.showNetworkStatus()
+            }
         }
+
         return binding.root
     }
 

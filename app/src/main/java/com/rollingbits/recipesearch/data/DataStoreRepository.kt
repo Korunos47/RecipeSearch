@@ -3,6 +3,7 @@ package com.rollingbits.recipesearch.data
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
@@ -17,6 +18,7 @@ import com.rollingbits.recipesearch.util.Constants.Companion.PREFERENCES_DIET_TY
 import com.rollingbits.recipesearch.util.Constants.Companion.PREFERENCES_DIET_TYPE_ID
 import com.rollingbits.recipesearch.util.Constants.Companion.PREFERENCES_MEAL_TYPE
 import com.rollingbits.recipesearch.util.Constants.Companion.PREFERENCES_MEAL_TYPE_ID
+import com.rollingbits.recipesearch.util.Constants.Companion.PREFERENCES_NETWORK_STATUS
 import com.rollingbits.recipesearch.util.userPreferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
@@ -35,6 +37,11 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
         val selectedMealTypeId = intPreferencesKey(PREFERENCES_MEAL_TYPE_ID)
         val selectedDietType = stringPreferencesKey(PREFERENCES_DIET_TYPE)
         val selectedDietId = intPreferencesKey(PREFERENCES_DIET_TYPE_ID)
+        val networkStatus = booleanPreferencesKey(PREFERENCES_NETWORK_STATUS)
+    }
+
+    suspend fun saveNetworkStatus(networkStatus: Boolean) = dataStore.edit {
+        it[PreferenceKeys.networkStatus] = networkStatus
     }
 
     suspend fun saveMealAndDietType(
@@ -67,6 +74,18 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
                 selectedMealDiet,
                 selectedMealDietId
             )
+        }
+
+    val readNetworkStatus: Flow<Boolean> = dataStore.data
+        .catch { exception ->
+            if (exception is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }.map { preference ->
+            val networkStatus = preference[PreferenceKeys.networkStatus] ?: false
+            networkStatus
         }
 }
 
