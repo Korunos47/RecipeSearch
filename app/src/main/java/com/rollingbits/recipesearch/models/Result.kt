@@ -1,8 +1,12 @@
 package com.rollingbits.recipesearch.models
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class Result(
     @SerializedName("aggregateLikes")
     val aggregateLikes: Int,
@@ -10,6 +14,8 @@ data class Result(
     val cheap: Boolean,
     @SerializedName("dairyFree")
     val dairyFree: Boolean,
+    @SerializedName("extendedIngredients")
+    val extendedIngredients: @RawValue List<ExtendedIngredient>?,
     @SerializedName("glutenFree")
     val glutenFree: Boolean,
     @SerializedName("image")
@@ -30,4 +36,4 @@ data class Result(
     val vegetarian: Boolean,
     @SerializedName("veryHealthy")
     val veryHealthy: Boolean,
-)
+): Parcelable
