@@ -18,7 +18,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rollingbits.recipesearch.R
-import com.rollingbits.recipesearch.adapters.RecipesAdapter
 import com.rollingbits.recipesearch.databinding.FragmentRecipesBinding
 import com.rollingbits.recipesearch.util.NetworkListener
 import com.rollingbits.recipesearch.util.NetworkResult

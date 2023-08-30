@@ -1,4 +1,4 @@
-package com.rollingbits.recipesearch.adapters
+package com.rollingbits.recipesearch.ui.recipes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
