@@ -11,6 +11,7 @@ import coil.load
 import com.rollingbits.recipesearch.R
 import com.rollingbits.recipesearch.models.Result
 import com.rollingbits.recipesearch.ui.recipes.RecipesFragmentDirections
+import org.jsoup.Jsoup
 import timber.log.Timber.Forest.d
 
 class RecipesRowBinding {
@@ -72,5 +73,13 @@ class RecipesRowBinding {
             }
         }
 
+        @BindingAdapter("parseHtml")
+        @JvmStatic
+        fun parseHtml(textView: TextView, description: String?) {
+            if (description != null) {
+                val desc = Jsoup.parse(description).text()
+                textView.text = desc
+            }
+        }
     }
 }

@@ -75,7 +75,7 @@
         app:tint="@color/white" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/titleTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -96,8 +96,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_checkmark"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/titleTV"
+        app:layout_constraintTop_toBottomOf="@+id/titleTV"
         app:tint="@color/darkGray" />
 
     <TextView
@@ -151,8 +151,98 @@
         android:layout_marginStart="8dp"
         android:text="@string/gluten_free"
         android:textColor="@color/darkGray"
-
         app:layout_constraintBottom_toBottomOf="@+id/glutenFreeIV"
         app:layout_constraintStart_toEndOf="@+id/glutenFreeIV"
         app:layout_constraintTop_toTopOf="@+id/glutenFreeIV" />
+
+    <ImageView
+        android:id="@+id/dairyFreeIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_checkmark"
+        app:layout_constraintEnd_toEndOf="@+id/glutenFreeIV"
+        app:layout_constraintStart_toStartOf="@+id/glutenFreeIV"
+        app:layout_constraintTop_toBottomOf="@+id/glutenFreeIV"
+        app:tint="@color/darkGray" />
+
+    <TextView
+        android:id="@+id/dairyFreeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/dairy_free"
+        android:textColor="@color/darkGray"
+        app:layout_constraintBottom_toBottomOf="@+id/dairyFreeIV"
+        app:layout_constraintStart_toEndOf="@+id/dairyFreeIV"
+        app:layout_constraintTop_toTopOf="@+id/dairyFreeIV" />
+
+    <ImageView
+        android:id="@+id/healthyIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/ic_checkmark"
+        app:layout_constraintBottom_toBottomOf="@+id/glutenFreeTV"
+        app:layout_constraintStart_toEndOf="@+id/glutenFreeTV"
+        app:layout_constraintTop_toTopOf="@+id/glutenFreeTV"
+        app:tint="@color/darkGray" />
+
+    <TextView
+        android:id="@+id/healthyTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/healthy"
+        android:textColor="@color/darkGray"
+        app:layout_constraintBottom_toBottomOf="@+id/healthyIV"
+        app:layout_constraintStart_toEndOf="@+id/healthyIV"
+        app:layout_constraintTop_toTopOf="@+id/healthyIV" />
+
+    <ImageView
+        android:id="@+id/cheapIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_checkmark"
+        app:layout_constraintEnd_toEndOf="@+id/healthyIV"
+        app:layout_constraintStart_toStartOf="@+id/healthyIV"
+        app:layout_constraintTop_toBottomOf="@+id/healthyIV"
+        app:tint="@color/darkGray" />
+
+    <TextView
+        android:id="@+id/cheapTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/cheap"
+        android:textColor="@color/darkGray"
+        app:layout_constraintBottom_toBottomOf="@+id/cheapIV"
+        app:layout_constraintStart_toEndOf="@+id/cheapIV"
+        app:layout_constraintTop_toTopOf="@+id/cheapIV" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/veganIV">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/summaryTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                tools:text="Summary" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
