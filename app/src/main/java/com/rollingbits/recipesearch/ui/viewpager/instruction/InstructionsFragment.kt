@@ -1,4 +1,4 @@
-package com.rollingbits.recipesearch.ui.viewpager
+package com.rollingbits.recipesearch.ui.viewpager.instruction
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

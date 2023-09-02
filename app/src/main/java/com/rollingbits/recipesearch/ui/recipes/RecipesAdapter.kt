@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rollingbits.recipesearch.databinding.RecipesRowLayoutBinding
 import com.rollingbits.recipesearch.models.FoodRecipe
 import com.rollingbits.recipesearch.models.Result
+import com.rollingbits.recipesearch.util.RecipesDiffUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
 
@@ -46,21 +47,4 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
             }
         }
     }
-}
-
-class RecipesDiffUtil(
-    private val oldList: List<Result>,
-    private val newList: List<Result>
-) : DiffUtil.Callback() {
-
-    override fun getOldListSize(): Int = oldList.size
-
-    override fun getNewListSize(): Int = newList.size
-
-
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-        oldList[oldItemPosition] === newList[newItemPosition]
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-        oldList[oldItemPosition] == newList[newItemPosition]
 }

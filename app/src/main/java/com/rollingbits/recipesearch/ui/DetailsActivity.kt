@@ -9,10 +9,11 @@ import androidx.navigation.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rollingbits.recipesearch.R
 import com.rollingbits.recipesearch.databinding.ActivityDetailsBinding
-import com.rollingbits.recipesearch.ui.viewpager.IngredientsFragment
-import com.rollingbits.recipesearch.ui.viewpager.InstructionsFragment
-import com.rollingbits.recipesearch.ui.viewpager.OverviewFragment
+import com.rollingbits.recipesearch.ui.viewpager.ingredients.IngredientsFragment
+import com.rollingbits.recipesearch.ui.viewpager.instruction.InstructionsFragment
+import com.rollingbits.recipesearch.ui.viewpager.overview.OverviewFragment
 import com.rollingbits.recipesearch.ui.viewpager.PagerAdapter
+import com.rollingbits.recipesearch.util.Constants.Companion.RECIPE_RESULT_KEY
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -42,7 +43,7 @@ class DetailsActivity : AppCompatActivity() {
         titles.add("Instructions")
 
         val bundle = Bundle()
-        bundle.putParcelable("recipeBundle", args.result)
+        bundle.putParcelable(RECIPE_RESULT_KEY, args.result)
 
         val adapter = PagerAdapter(
             bundle,

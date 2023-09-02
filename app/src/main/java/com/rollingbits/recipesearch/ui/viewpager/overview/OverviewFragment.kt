@@ -1,4 +1,4 @@
-package com.rollingbits.recipesearch.ui.viewpager
+package com.rollingbits.recipesearch.ui.viewpager.overview
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import com.rollingbits.recipesearch.R
 import com.rollingbits.recipesearch.bindingadapters.RecipesRowBinding
 import com.rollingbits.recipesearch.databinding.FragmentOverviewBinding
 import com.rollingbits.recipesearch.models.Result
+import com.rollingbits.recipesearch.util.Constants.Companion.RECIPE_RESULT_KEY
 
 
 class OverviewFragment : Fragment() {
@@ -25,7 +26,7 @@ class OverviewFragment : Fragment() {
         binding = FragmentOverviewBinding.inflate(layoutInflater, container, false)
 
         val args = arguments
-        val bundle: Result? = args?.getParcelable("recipeBundle")
+        val bundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
         with(binding) {
             recipeIV.load(bundle?.image)
