@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.rollingbits.recipesearch.data.database.RecipesEntity
+import com.rollingbits.recipesearch.data.database.entities.RecipesEntity
 import com.rollingbits.recipesearch.models.FoodRecipe
 import com.rollingbits.recipesearch.util.NetworkResult
 

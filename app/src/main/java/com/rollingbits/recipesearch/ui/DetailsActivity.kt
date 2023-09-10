@@ -1,6 +1,7 @@
 package com.rollingbits.recipesearch.ui
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -9,10 +10,10 @@ import androidx.navigation.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rollingbits.recipesearch.R
 import com.rollingbits.recipesearch.databinding.ActivityDetailsBinding
+import com.rollingbits.recipesearch.ui.viewpager.PagerAdapter
 import com.rollingbits.recipesearch.ui.viewpager.ingredients.IngredientsFragment
 import com.rollingbits.recipesearch.ui.viewpager.instruction.InstructionsFragment
 import com.rollingbits.recipesearch.ui.viewpager.overview.OverviewFragment
-import com.rollingbits.recipesearch.ui.viewpager.PagerAdapter
 import com.rollingbits.recipesearch.util.Constants.Companion.RECIPE_RESULT_KEY
 
 class DetailsActivity : AppCompatActivity() {
@@ -56,6 +57,11 @@ class DetailsActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = titles[position]
         }.attach()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.details_menu, menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -10,7 +10,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.rollingbits.recipesearch.data.Repository
-import com.rollingbits.recipesearch.data.database.RecipesEntity
+import com.rollingbits.recipesearch.data.database.entities.FavoritesEntity
+import com.rollingbits.recipesearch.data.database.entities.RecipesEntity
 import com.rollingbits.recipesearch.models.FoodRecipe
 import com.rollingbits.recipesearch.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,10 +26,28 @@ class MainViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
-    val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readDatabase().asLiveData()
+    val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readRecipes().asLiveData()
+    val readFavoriteRecipes: LiveData<List<FavoritesEntity>> =
+        repository.local.readFavoriteRecipes().asLiveData()
+
     private fun insertRecipes(recipesEntity: RecipesEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.insertRecipes(recipesEntity)
+        }
+
+    private fun insertFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertFavoriteRecipes(favoritesEntity)
+        }
+
+    private fun deleteFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteFavoriteRecipe(favoritesEntity)
+        }
+
+    private fun deleteAllFavoriteRecipes() =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteAllFavoriteRecipes()
         }
 
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()

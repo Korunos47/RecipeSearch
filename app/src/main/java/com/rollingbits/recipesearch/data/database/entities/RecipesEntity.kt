@@ -1,4 +1,4 @@
-package com.rollingbits.recipesearch.data.database
+package com.rollingbits.recipesearch.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
